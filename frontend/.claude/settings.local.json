@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Skill(run)",
+      "Bash(chromium-cli --help)",
+      "Bash(npx --yes playwright --version)",
+      "Bash(curl *)",
+      "Bash(node \"C:\\\\Users\\\\yyach\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-yyach-Desktop-Portfolio-frontend\\\\49d112cf-edf2-4dd4-8a0b-7c71cdbfc0db\\\\scratchpad\\\\verify.mjs\")",
+      "Bash(npm init *)",
+      "Bash(node verify.mjs)",
+      "Bash(npx playwright *)",
+      "Bash(taskkill //F //IM node.exe //FI \"WINDOWTITLE eq npm*\")",
+      "Bash(pkill -f \"vite\")",
+      "Bash(powershell -Command \"Get-Process node -ErrorAction SilentlyContinue | Where-Object {\\\\$_.Path -like '*node.exe*'} | Select-Object Id,Path\" 2>&1)",
+      "Bash(powershell -Command \"Get-NetTCPConnection -LocalPort 5174 -ErrorAction SilentlyContinue | Select-Object OwningProcess\" 2>&1)",
+      "Bash(powershell -Command \"Stop-Process -Id 31148 -Force\")"
+    ]
+  }
+}

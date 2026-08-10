@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(java -version)",
+      "Bash(mvn -version)",
+      "Bash(curl -s https://start.spring.io/starter.zip -d type=maven-project -d language=java -d bootVersion=3.5.0 -d baseDir=backend -d groupId=com.achraf -d artifactId=portfolio -d name=portfolio -d 'description=Portfolio backend API' -d packageName=com.achraf.portfolio -d packaging=jar -d javaVersion=21 -d dependencies=web,data-jpa,postgresql,flyway,validation,security,mail,lombok,configuration-processor -o backend.zip)",
+      "Bash(unzip -o backend.zip -d .)",
+      "Bash(rm backend.zip)",
+      "Bash(curl -sv \"https://start.spring.io/starter.zip\" -d type=maven-project -o backend.zip)",
+      "Bash(curl -s \"https://start.spring.io/metadata/client\")",
+      "Bash(curl -s \"https://start.spring.io/metadata/client\" -H \"Accept: application/json\")",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\);process.stdin.on\\('end',\\(\\)=>{const j=JSON.parse\\(d\\);console.log\\(JSON.stringify\\(j.bootVersion.values.slice\\(0,5\\),null,2\\)\\)}\\)\")",
+      "Bash(rm -f backend.zip)",
+      "Bash(curl -s https://start.spring.io/starter.zip -d type=maven-project -d language=java -d bootVersion=4.0.7.RELEASE -d baseDir=backend -d groupId=com.achraf -d artifactId=portfolio -d name=portfolio -d 'description=Portfolio backend API' -d packageName=com.achraf.portfolio -d packaging=jar -d javaVersion=21 -d dependencies=web,data-jpa,postgresql,flyway,validation,security,mail,lombok,configuration-processor -o backend.zip)",
+      "Bash(unzip -oq backend.zip)",
+      "Bash(./mvnw.cmd -q -o compile)",
+      "Bash(./mvnw.cmd -q compile)",
+      "Bash(./mvnw.cmd -q test-compile)",
+      "Bash(echo \"EXIT CODE: $?\")",
+      "Bash(docker --version)",
+      "Bash(where psql *)",
+      "Bash(where pg_ctl)",
+      "Read(//c/Program Files/PostgreSQL/**)",
+      "Bash(net start *)",
+      "Bash(/c/Program Files/PostgreSQL/18/bin/psql.exe *)"
+    ]
+  }
+}
