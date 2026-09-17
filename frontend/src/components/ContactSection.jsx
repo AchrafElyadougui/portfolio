@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Instagram from '../assets/icons/instagram.svg';
 import Discord from '../assets/icons/discord.svg';
 import Mail from '../assets/icons/email.svg';
-import LinkedIn from '../assets/icons/LinkedIn.svg';
+import LinkedIn from '../assets/icons/linkedin.svg';
 import { fadeUp, staggerContainer, viewportFadeUp } from '../lib/motion';
 import RevealText from './RevealText';
 
