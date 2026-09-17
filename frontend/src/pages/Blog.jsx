@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer } from '../lib/motion';
+import RevealText from '../components/RevealText';
 
 const posts = [
   {
@@ -19,14 +20,14 @@ export default function Blog() {
 
   return (
     <div className="min-h-screen text-[var(--color-text)] px-6 py-10 font-mono">
-      <motion.h1
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+      <RevealText
+        as="h1"
         className="text-4xl font-bold mb-2"
-      >
-        <span>Tech </span><span className="text-blue-300">Blog.</span>
-      </motion.h1>
+        segments={[
+          { text: 'Tech ' },
+          { text: 'Blog.', className: 'text-blue-300' },
+        ]}
+      />
       <motion.p
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}

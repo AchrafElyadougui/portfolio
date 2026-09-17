@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
+import ScrollProgress from '../components/ScrollProgress';
 import { pageTransition } from '../lib/motion';
 
 function Layout() {
@@ -10,6 +11,7 @@ function Layout() {
 
   return (
     <div className="min-h-screen">
+        <ScrollProgress/>
         <Navbar/>
       <div>
         <ScrollToTop/>

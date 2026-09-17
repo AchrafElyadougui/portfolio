@@ -15,7 +15,27 @@
       "Bash(pkill -f \"vite\")",
       "Bash(powershell -Command \"Get-Process node -ErrorAction SilentlyContinue | Where-Object {\\\\$_.Path -like '*node.exe*'} | Select-Object Id,Path\" 2>&1)",
       "Bash(powershell -Command \"Get-NetTCPConnection -LocalPort 5174 -ErrorAction SilentlyContinue | Select-Object OwningProcess\" 2>&1)",
-      "Bash(powershell -Command \"Stop-Process -Id 31148 -Force\")"
+      "Bash(powershell -Command \"Stop-Process -Id 31148 -Force\")",
+      "Bash(node verify2.mjs)",
+      "Bash(sed -i 's/click\\(\\)/click\\({ timeout: 15000 }\\)/' verify2.mjs)",
+      "Bash(sed -i \"s/waitForTimeout\\(1200\\)/waitForTimeout\\(2500\\)/\" verify2.mjs)",
+      "Bash(node verify10.mjs)",
+      "Bash(powershell -Command \"Stop-Process -Id 26616 -Force\")",
+      "Bash(powershell -NoProfile -Command \"\\(Get-NetTCPConnection -LocalPort 5174 -ErrorAction SilentlyContinue\\).OwningProcess | Sort-Object -Unique\")",
+      "Bash(powershell -NoProfile -Command \"Stop-Process -Id 36032 -Force\")",
+      "Bash(cp frontend/src/assets/profile.png frontend-v2/src/assets/profile.png)",
+      "Bash(cp frontend/src/assets/projects/cooperative.png frontend-v2/src/assets/projects/cooperative.png)",
+      "Bash(cp frontend/src/assets/projects/pharmacie2.png frontend-v2/src/assets/projects/pharmacie2.png)",
+      "Bash(cp frontend/src/assets/icons/react.svg frontend/src/assets/icons/laravel.svg frontend/src/assets/icons/tailwind.svg frontend/src/assets/icons/mysql.svg frontend/src/assets/icons/Axios.svg frontend/src/assets/icons/github.svg frontend/src/assets/icons/linkedin.svg frontend/src/assets/icons/email.svg frontend/src/assets/icons/discord.svg frontend/src/assets/icons/instagram.svg frontend-v2/src/assets/icons/)",
+      "Bash(node -e ' *)",
+      "Bash(rm -f src/assets/projects/cooperative.png src/assets/projects/pharmacie2.png src/assets/profile.png)",
+      "Bash(npm uninstall *)",
+      "Bash(node verify_v2.mjs)",
+      "Bash(powershell -NoProfile -Command \"\\(Get-NetTCPConnection -LocalPort 5173 -ErrorAction SilentlyContinue\\).OwningProcess | Sort-Object -Unique\")",
+      "Bash(powershell -NoProfile -Command \"Stop-Process -Id 7732 -Force\")",
+      "Bash(node verify_redesign.mjs)",
+      "Bash(node verify_redesign_mobile.mjs)",
+      "Bash(powershell -NoProfile -Command \"Stop-Process -Id 31368 -Force\")"
     ]
   }
 }

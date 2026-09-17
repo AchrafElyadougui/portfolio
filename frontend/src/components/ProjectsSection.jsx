@@ -1,5 +1,6 @@
-import { ExternalLink } from "lucide-react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { ExternalLink, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import cooperative from "../assets/projects/cooperative.png";
 import pharmacie from "../assets/projects/pharmacie2.png";
 import { fadeUp, staggerContainer } from "../lib/motion";
@@ -48,63 +49,167 @@ const projects = [
   },
 ];
 
+function TagList({ tags, className }) {
+  return (
+    <div className={`flex flex-wrap items-center gap-2 ${className || ""}`}>
+      {tags.map((tag) => (
+        <span
+          key={tag}
+          className="flex items-center gap-2 bg-[var(--color-nav-hover)] text-sm text-[var(--color-nav-text)] px-3 py-1 rounded-md"
+        >
+          {techIcons[tag] && (
+            <img src={techIcons[tag]} alt={`${tag} icon`} className="w-4 h-4" />
+          )}
+          {tag}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export default function ProjectsSection({ count }) {
   const displayedProjects = count ? projects.slice(0, count) : projects;
+  const [selectedTitle, setSelectedTitle] = useState(null);
+  const selectedProject = projects.find((p) => p.title === selectedTitle);
+
+  useEffect(() => {
+    document.body.style.overflow = selectedProject ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedProject]);
+
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setSelectedTitle(null);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, []);
+
   return (
-    <motion.section
-      variants={staggerContainer(0.15)}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.1 }}
-      className="bg-[var(--color-background)] text-[var(--color-text)] pt-10 px-4 max-w-5xl mx-auto"
-    >
-      {displayedProjects.map((project, index) => (
-        <motion.div variants={fadeUp} key={index} className="mb-16">
-          <h3 className="text-2xl font-bold mb-1">{project.title}</h3>
-          {project.date && (
-            <p className="text-sm text-gray-400 mb-2">{project.date}</p>
-          )}
-          <p className="mb-4 max-w-3xl">{project.description}</p>
+    <>
+      <motion.section
+        variants={staggerContainer(0.15)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.1 }}
+        className="bg-[var(--color-background)] text-[var(--color-text)] pt-10 px-4 max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        {displayedProjects.map((project) => (
           <motion.div
-            whileHover={{ scale: 1.015, y: -4 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="overflow-hidden rounded-md border border-[var(--color-nav-hover)] shadow-md"
+            variants={fadeUp}
+            key={project.title}
+            role="button"
+            tabIndex={0}
+            onClick={() => setSelectedTitle(project.title)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setSelectedTitle(project.title);
+              }
+            }}
+            className="group text-left cursor-pointer outline-none rounded-md focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
           >
-            <img
-              src={project.image}
-              alt={`${project.title} preview`}
-              className="w-full object-cover"
-            />
+            <motion.div
+              layoutId={`project-image-${project.title}`}
+              className="overflow-hidden rounded-md border border-[var(--color-nav-hover)] shadow-md"
+            >
+              <motion.img
+                src={project.image}
+                alt={`${project.title} preview`}
+                className="w-full h-44 object-cover"
+                whileHover={{ scale: 1.06 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+              />
+            </motion.div>
+            <motion.h3
+              layoutId={`project-title-${project.title}`}
+              className="text-xl font-bold mt-3"
+            >
+              {project.title}
+            </motion.h3>
+            {project.date && (
+              <p className="text-sm text-gray-400 mb-1">{project.date}</p>
+            )}
+            <p className="text-sm text-[var(--color-subtext)] line-clamp-2">
+              {project.description}
+            </p>
+            <TagList tags={project.tags} className="mt-3" />
           </motion.div>
-          <div className="flex flex-wrap items-center mt-4 gap-2">
-            {project.tags.map((tag, i) => (
-              <span
-                key={i}
-                className="flex items-center gap-2 bg-[var(--color-nav-hover)] text-sm text-[var(--color-nav-text)] px-3 py-1 rounded-md"
+        ))}
+      </motion.section>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black/70 z-50"
+              onClick={() => setSelectedTitle(null)}
+            />
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto scrollbar-hide"
+              onClick={() => setSelectedTitle(null)}
+            >
+              <motion.div
+                layoutId={`project-image-${selectedProject.title}`}
+                transition={{ type: "spring", stiffness: 260, damping: 28 }}
+                onClick={(e) => e.stopPropagation()}
+                className="bg-[var(--color-background)] text-[var(--color-text)] rounded-xl overflow-hidden max-w-2xl w-full my-auto shadow-2xl"
               >
-                {techIcons[tag] && (
-                  <img
-                    src={techIcons[tag]}
-                    alt={`${tag} icon`}
-                    className="w-4 h-4"
-                  />
-                )}
-                {tag}
-              </span>
-            ))}
-          </div>
-          <motion.a
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center mt-4 text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition"
-          >
-            Visit website <ExternalLink className="ml-2 w-4 h-4" />
-          </motion.a>
-        </motion.div>
-      ))}
-    </motion.section>
+                <img
+                  src={selectedProject.image}
+                  alt={`${selectedProject.title} preview`}
+                  className="w-full max-h-72 object-cover"
+                />
+                <div className="p-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <motion.h3
+                      layoutId={`project-title-${selectedProject.title}`}
+                      className="text-2xl font-bold"
+                    >
+                      {selectedProject.title}
+                    </motion.h3>
+                    <button
+                      onClick={() => setSelectedTitle(null)}
+                      aria-label="Close project details"
+                      className="shrink-0 p-1 rounded-md hover:bg-[var(--color-nav-hover)]"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.15, duration: 0.3 }}
+                  >
+                    {selectedProject.date && (
+                      <p className="text-sm text-gray-400 mt-1 mb-3">
+                        {selectedProject.date}
+                      </p>
+                    )}
+                    <p className="mb-4">{selectedProject.description}</p>
+                    <TagList tags={selectedProject.tags} />
+                    <a
+                      href={selectedProject.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center mt-5 text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition"
+                    >
+                      Visit website <ExternalLink className="ml-2 w-4 h-4" />
+                    </a>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

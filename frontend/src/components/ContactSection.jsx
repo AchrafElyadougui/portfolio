@@ -5,12 +5,13 @@ import Discord from '../assets/icons/discord.svg';
 import Mail from '../assets/icons/email.svg';
 import LinkedIn from '../assets/icons/LinkedIn.svg';
 import { fadeUp, staggerContainer, viewportFadeUp } from '../lib/motion';
+import RevealText from './RevealText';
 
 const contactLinks = [
-    {name:'Mail',icon:Mail,link:'mailto:achrafyi10@gmail.com'},
-    {name:'LinkedIn',icon:LinkedIn,link:'https://www.linkedin.com/in/el-yadougui-achraf'},
+    {name:'Mail',icon:Mail,link:'mailto:achrafelyadougui@gmail.com'},
+    {name:'LinkedIn',icon:LinkedIn,link:'https://linkedin.com/in/achraf-el-yadougui'},
     {name:'Discord',icon:Discord,link:'https://discord.gg/DHcZFKSc'},
-    {name:'Instagram',icon:Instagram,link:'https://www.instagram.com/achraf_yi/'},
+    {name:'Instagram',icon:Instagram,link:'https://www.instagram.com/achraf_el_yadougui/'},
 ]
 export default function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -21,9 +22,14 @@ export default function ContactSection() {
 
   return (
     <motion.section {...viewportFadeUp} className="mx-auto text-[var(--color-text)] mb-7">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">
-        Contact me<span className="text-blue-500">.</span>
-      </h2>
+      <RevealText
+        as="h2"
+        className="text-3xl md:text-4xl font-bold mb-4"
+        segments={[
+          { text: "Contact me" },
+          { text: ".", className: "text-blue-500" },
+        ]}
+      />
       <p className="mb-8 text-lg">
         I'm always eager to explore new opportunities and take on exciting projects. If you have a project in mind, or just want to say hi, feel free to send me a message.
       </p>

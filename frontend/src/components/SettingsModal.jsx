@@ -29,12 +29,14 @@ export default function SettingsModal({ onClose }) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
       className="fixed inset-0 flex items-center justify-center bg-black/70 z-50"
+      onClick={onClose}
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.92, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.92, y: 12 }}
         transition={{ duration: 0.25, ease: "easeOut" }}
+        onClick={(e) => e.stopPropagation()}
         className="bg-[var(--color-background-white)] dark:bg-[var(--color-background)] text-[var(--color-text)] p-6 rounded-xl w-full max-w-md shadow-2xl border border-neutral-300 dark:border-neutral-700"
       >
         {/* Header */}

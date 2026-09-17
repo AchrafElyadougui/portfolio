@@ -1,6 +1,6 @@
-import { Globe, Rocket } from "lucide-react";
+import { Globe } from "lucide-react";
 import { motion } from "framer-motion";
-import myPhoto from "../assets/profile.png"; // replace with your actual image
+import myPhoto from "../assets/background.png"; // replace with your actual image
 import { staggerContainer, fadeUp } from "../lib/motion";
 
 export default function AboutMe() {

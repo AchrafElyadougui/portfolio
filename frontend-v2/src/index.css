@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
+@import "tailwindcss";
+
+/*
+  Editorial / creative-technologist design system. Dark is the only theme —
+  everything consumes var(--color-*) so a future theme is a CSS-only change.
+*/
+:root {
+  color-scheme: dark;
+
+  --color-bg: #0a0a0a;
+  --color-bg-raised: #111110;
+  --color-line: rgba(244, 244, 240, 0.12);
+  --color-line-strong: rgba(244, 244, 240, 0.24);
+
+  --color-text: #f4f4f0;
+  --color-text-muted: #8f8f88;
+  --color-text-faint: #55554f;
+
+  /* Distinctive single accent — acid lime, not the generic SaaS blue. */
+  --color-accent: #c6ff3a;
+  --color-accent-dim: rgba(198, 255, 58, 0.14);
+
+  --font-display: "Space Grotesk", -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis drives smooth scroll instead */
+  background-color: var(--color-bg);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom cursor is only enabled by JS on fine-pointer, no-touch devices,
+   which adds this class to <html>. Everything else keeps the native cursor. */
+html.has-custom-cursor,
+html.has-custom-cursor a,
+html.has-custom-cursor button {
+  cursor: none;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: #0a0a0a;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-line-strong);
+  border-radius: 8px;
+  border: 2px solid var(--color-bg);
+}
+
+/* Keyboard users still need a visible focus ring even with cursor:none. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Static film-grain texture. A single background-image, no JS/animation
+   cost — cheap enough to leave on at all times. */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  html.has-custom-cursor {
+    cursor: auto;
+  }
+}

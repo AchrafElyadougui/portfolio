@@ -1,6 +1,8 @@
 import {  RouterProvider  } from 'react-router-dom'
+import { MotionConfig } from 'framer-motion'
 import { router } from './routes'
 import { useEffect } from 'react';
+import SmoothScroll from './components/SmoothScroll';
 
 export default function App() {
   useEffect(() => {
@@ -9,7 +11,11 @@ export default function App() {
   }, []);
   return (
     <div  className='bg-[var(--color-background)] xl:px-[99px] px-5'>
-      <RouterProvider router={router}/>
+      <MotionConfig reducedMotion="user">
+        <SmoothScroll>
+          <RouterProvider router={router}/>
+        </SmoothScroll>
+      </MotionConfig>
     </div>
   )
 }

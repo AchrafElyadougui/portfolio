@@ -3,6 +3,7 @@ import github from '../assets/icons/github.svg'
 import { ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { viewportFadeUp } from '../lib/motion'
+import RevealText from '../components/RevealText'
 
 
 export default function ProjectsPage() {
@@ -15,7 +16,7 @@ export default function ProjectsPage() {
             transition={{ duration: 0.5, ease: 'easeOut' }}
             className='grid gap-4'
           >
-            <h1 className='text-3xl font-bold'>My Work.</h1>
+            <RevealText as="h1" className='text-3xl font-bold' segments={[{ text: 'My Work.' }]} />
             <h3>I have been programming for 7 years and have worked on numerous projects. Below are some of my latest projects; you can find more on my GitHub profile.</h3>
           </motion.div>
           <ProjectsSection/>

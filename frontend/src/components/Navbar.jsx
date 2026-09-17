@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "framer-motion";
 import {
   Github,
   Send,
@@ -21,6 +21,15 @@ export default function Navbar() {
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
   const [showSettingsModal, setShowSettingsModal] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    // Hysteresis (different enter/exit thresholds) so the navbar doesn't
+    // flicker when scrollY briefly settles near a single boundary value
+    // (e.g. ScrollToTop's smooth-scroll landing right around there).
+    setScrolled((prev) => (prev ? latest > 10 : latest > 48));
+  });
 
   const isActive = (route) => path === route;
   const toggleDropdown = () => setIsOpen((prev) => !prev);
@@ -44,8 +53,22 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="relative mb-8">
-        <nav className="flex items-center justify-between xl:px-6 px-4 py-3 font-mono pt-9">
+      <div className="sticky top-0 z-50 mb-8">
+        <motion.nav
+          initial={{ opacity: 0, y: -16 }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            paddingTop: scrolled ? 14 : 36,
+            paddingBottom: scrolled ? 10 : 12,
+          }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className={`flex items-center justify-between xl:px-6 px-4 font-mono transition-colors duration-300 ${
+            scrolled
+              ? "backdrop-blur-md bg-[var(--color-background)]/80 shadow-sm border-b border-[var(--color-border)]"
+              : "bg-transparent"
+          }`}
+        >
           <div className="flex items-center">
             {/* Left: Logo */}
             <div className="flex items-center gap-6 mr-5">
@@ -173,7 +196,7 @@ export default function Navbar() {
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.button>
           </div>
-        </nav>
+        </motion.nav>
 
         {/* Mobile Menu */}
         <AnimatePresence>

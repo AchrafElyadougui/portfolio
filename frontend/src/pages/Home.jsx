@@ -22,6 +22,7 @@ import Figma from '../assets/icons/figma.svg';
 import Docker from '../assets/icons/docker.svg';
 import Microsoft from '../assets/icons/microsoft.svg';
 import ContactSection from '../components/ContactSection';
+import RevealText from '../components/RevealText';
 
 const techIcons = [
     {name:'React',icon:reactIcon},
@@ -52,11 +53,11 @@ export default function Home() {
         <AboutSection/>
         <div className='text-[var(--color-text)] max-w-5xl mx-auto'>
           <motion.div {...viewportFadeUp} className='grid gap-4'>
-            <h1 className='text-3xl font-bold'>Recent Projects.</h1>
+            <RevealText as="h1" className='text-3xl font-bold' segments={[{ text: 'Recent Projects.' }]} />
             <p>Explore some of my recent projects below. For more, visit my GitHub profile.</p>
           </motion.div>
           <ProjectsSection count={3}/>
-          <div className="text-center mb-10">
+          <div className="text-center mt-10 mb-10">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
               <Link
                 to='/projects'
@@ -68,7 +69,7 @@ export default function Home() {
           </div>
         </div>
         <div className='text-[var(--color-text)] max-w-5xl grid gap-5 pb-7'>
-            <h1 className='text-3xl font-bold'>Technologies I use.</h1>
+            <RevealText as="h1" className='text-3xl font-bold' segments={[{ text: 'Technologies I use.' }]} />
             <p>Over the years, I have worked with a variety of technologies. Here are some of the technologies I have experience with:</p>
             <motion.div
               variants={staggerContainer(0.05)}

@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Global Light Theme (default) */
 :root {
   --color-background: #ffffff;
