@@ -6,7 +6,7 @@ import { staggerContainer, fadeUp } from "../lib/motion";
 export default function AboutMe() {
   return (
 <section
-  className="relative w-[1000px] h-[550px] rounded-2xl text-white min-h-[80vh] bg-cover bg-right md:bg-center bg-no-repeat mb-8 overflow-hidden" style={{ backgroundImage: `url(${myPhoto})` }}>
+  className="relative mx-auto w-[100%] md:w-[1000px] h-[480px] rounded-2xl text-white min-h-[80vh] xxs:min-h-[65vh] xs:min-h-[55vh] bg-cover bg-right md:bg-center bg-no-repeat mb-8 overflow-hidden" style={{ backgroundImage: `url(${myPhoto})` }}>
       <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
       <motion.div
         variants={staggerContainer(0.15)}
@@ -16,12 +16,12 @@ export default function AboutMe() {
       >
 
         {/* Left Text Content */}
-        <div className="w-full md:pl-10 px-8 overflow-hidden md:w-1/2 z-10 mt-7">
+        <div className="w-full md:pl-10 px-5 md:px-8 overflow-hidden md:w-1/2 z-10 mt-7">
           <motion.p variants={fadeUp} className="flex items-center gap-2 text-sm uppercase tracking-wider text-white/80 mb-2">
             <Globe size={16} />
             About Me
           </motion.p>
-          <motion.h1 variants={fadeUp} className="text-4xl md:text-4xl font-bold mb-4">
+          <motion.h1 variants={fadeUp} className="text-2xl md:text-4xl sm:text-3xl font-bold mb-4">
             hey, I'm <span className="text-white">Achraf</span> 👋
           </motion.h1>
           <motion.p variants={fadeUp} className="text-white/80 font-mono ">
