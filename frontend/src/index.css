@@ -1,8 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --breakpoint-xs: 400px;
-  --breakpoint-xxs: 377px;
+  --breakpoint-xs: 375px;
 }
 
 .scrollbar-hide {
