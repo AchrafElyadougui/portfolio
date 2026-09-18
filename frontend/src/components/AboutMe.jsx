@@ -6,7 +6,7 @@ import { staggerContainer, fadeUp } from "../lib/motion";
 export default function AboutMe() {
   return (
 <section
-  className="relative mx-auto w-[100%] md:w-[1000px] h-[480px] rounded-2xl text-white min-h-[80vh] xxs:min-h-[65vh] xs:min-h-[55vh] bg-cover bg-right md:bg-center bg-no-repeat mb-8 overflow-hidden" style={{ backgroundImage: `url(${myPhoto})` }}>
+  className="relative mx-auto w-[100%] md:w-[1000px] h-[480px] rounded-2xl text-white min-h-[80dvh] xxs:min-h-[65dvh] xs:min-h-[55dvh] bg-cover bg-right md:bg-center bg-no-repeat mb-8 overflow-hidden" style={{ backgroundImage: `url(${myPhoto})` }}>
       <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
       <motion.div
         variants={staggerContainer(0.15)}
