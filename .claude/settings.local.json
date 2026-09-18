@@ -52,7 +52,17 @@
       "Bash(npm init *)",
       "Bash(npm install *)",
       "Bash(pkill -f \"vite\")",
-      "Bash(pkill -f \"node.*vite\")"
+      "Bash(pkill -f \"node.*vite\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(npx --yes playwright --version)",
+      "Bash(npx --yes playwright install chromium)",
+      "Bash(npm ls *)",
+      "Bash(taskkill //F //IM node.exe //T)",
+      "Bash(pkill -f \"npm run dev\")",
+      "Bash(tasklist)",
+      "Bash(curl -sf http://localhost:5173)"
     ]
   }
 }

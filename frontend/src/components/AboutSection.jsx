@@ -98,7 +98,7 @@ export default function AboutSection() {
       >
         <div
           onClick={toggleFlip}
-          className="relative w-full h-full min-h-[550px] cursor-pointer [perspective:1500px]"
+          className="relative w-full h-[550px] md:h-full min-h-[550px] cursor-pointer [perspective:1500px]"
         >
           <div
             className="relative w-full h-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d]"
