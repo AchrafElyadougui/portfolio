@@ -33,11 +33,11 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <div className="bg-[var(--color-backgorund-black)] text-[var(--color-text)] min-h-screen px-6 py-12 md:px-5 flex flex-col md:flex-row gap-10">
+    <div className="bg-[var(--color-backgorund-black)] text-[var(--color-text)] min-h-screen pb-3 py-12 md:px-5 flex flex-col md:flex-row gap-10">
       {/* Left Side - About Me */}
       <motion.div
         {...viewportFadeUp}
-        className="flex-1 space-y-6"
+        className="flex-1 space-y-2 md:space-y-6"
       >
         <RevealText
           as="h1"
@@ -59,7 +59,7 @@ export default function AboutSection() {
         <p className="text-lg font-mono text-[var(--color-subtext)]">
           Alongside development, I work in IT supervision at <span className="text-[var(--color-text)]">Attijariwafa Bank</span> — monitoring information systems, ensuring their availability, and handling first-level incidents through established procedures.
         </p>
-        <p className="text-lg font-mono text-[var(--color-subtext)]">
+        <p className="text-lg font-mono pb-3 md:pb-0 text-[var(--color-subtext)]">
           This mix of building software and understanding production environments shapes how I work: reliable, practical solutions built for the real world.
         </p>
 
@@ -132,21 +132,24 @@ export default function AboutSection() {
             </div>
 
             {/* Back - Studio Content */}
-            <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-[var(--color-nav-hover)] border border-[var(--color-border)] rounded-2xl p-6 space-y-6 shadow-xl overflow-y-auto">
+            <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-[var(--color-nav-hover)] border border-[var(--color-border)] rounded-2xl p-6 space-y-2 md:space-y-6 shadow-xl overflow-y-auto">
               <div className="flex items-center gap-2 text-orange-500 font-mono text-sm">
                 <CodeBracketIcon className="h-5 w-5" />
                 MY STUDIO
               </div>
-              <h2 className="text-2xl font-bold text-[var(--color-text)]">
+              {/* <h2 className="text-xl md:text-2xl font-bold text-[var(--color-text)]">
                 Welcome to my workspace.
               </h2>
               <p className="text-lg font-mono text-[var(--color-subtext)]">
-  This portfolio is a glimpse into my journey as a Software Engineering student and Full Stack Developer from Morocco. Here, I share the projects, technologies, and experiences that shape the way I build software.{" "}
-  <span className="text-[var(--color-text)] font-semibold">
-    I’m focused on building practical digital solutions
-  </span>{" "}
-  with modern technologies while continuously improving my technical skills and understanding of real-world systems.
-</p>
+                This portfolio reflects my journey as a Software Engineering student and Full Stack Developer from Morocco. I build practical digital solutions with modern technologies while continuously improving my skills and experience.             
+              </p> */}
+              <p className="text-lg font-mono text-[var(--color-subtext)]">
+                This portfolio is a glimpse into my journey as a Software Engineering student and Full Stack Developer from Morocco. Here, I share the projects, technologies, and experiences that shape the way I build software.{" "}
+                <span className="text-[var(--color-text)] font-semibold">
+                  I’m focused on building practical digital solutions
+                </span>{" "}
+                with modern technologies while continuously improving my technical skills and understanding of real-world systems.
+              </p>
 
               <motion.a
                 whileHover={{ scale: 1.03 }}
@@ -154,14 +157,14 @@ export default function AboutSection() {
                 href="/CV_EL-YADOUGUI_ACHRAF.pdf"
                 download="CV_EL-YADOUGUI_ACHRAF.pdf"
                 onClick={(e) => e.stopPropagation()}
-                className="flex items-center gap-2 px-4 py-2 border-2 border-[var(--color-border)] text-[var(--color-text)] font-mono rounded-lg hover:bg-neutral-400 hover:text-black transition w-fit"
+                className="flex items-center gap-2 px-4 py-2 mt-3.5 md:mt-0 border-2 border-[var(--color-border)] text-[var(--color-text)] font-mono rounded-lg hover:bg-neutral-400 hover:text-black transition w-fit"
               >
                 <ArrowDownTrayIcon className="h-4 w-4" />
                 Download CV
               </motion.a>
 
               {/* Cards */}
-              <div className="grid grid-cols-12 md:grid-cols-2 gap-4 text-[var(--color-subtext)] font-mono">
+              <div className="hidden md:grid grid-cols-2 gap-4 text-[var(--color-subtext)] font-mono">
                   <div className="bg-[var(--color-background-white)] border border-[var(--color-border)] p-4 rounded-xl col-span-12 md:col-span-1">
                       <div className="text-orange-500 mb-2">💻</div>
                       <h3 className="text-[var(--color-text)] font-bold mb-1">Full Stack Development</h3>
