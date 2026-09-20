@@ -132,7 +132,7 @@ export default function AboutSection() {
             </div>
 
             {/* Back - Studio Content */}
-            <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-[var(--color-nav-hover)] border border-[var(--color-border)] rounded-2xl p-6 space-y-3 md:space-y-6 shadow-xl overflow-y-auto">
+            <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-[var(--color-nav-hover)] border border-[var(--color-border)] rounded-2xl p-6 space-y-3.5 md:space-y-6 shadow-xl overflow-y-auto">
               <div className="flex items-center gap-2 text-orange-500 font-mono text-sm">
                 <CodeBracketIcon className="h-5 w-5" />
                 MY STUDIO
