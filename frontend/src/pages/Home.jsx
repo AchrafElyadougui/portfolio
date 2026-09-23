@@ -51,7 +51,7 @@ export default function Home() {
           <AboutMe/>
         </div>
         <AboutSection/>
-        <div className='text-[var(--color-text)] max-w-5xl mx-auto'>
+        <div className='text-[var(--color-text)] w-full md:max-w-5xl mx-auto mt-10'>
           <motion.div {...viewportFadeUp} className='grid gap-4'>
             <RevealText as="h1" className='text-3xl font-bold' segments={[{ text: 'Recent Projects.' }]} />
             <p>Explore some of my recent projects below. For more, visit my GitHub profile.</p>

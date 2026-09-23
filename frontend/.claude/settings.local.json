@@ -35,7 +35,9 @@
       "Bash(powershell -NoProfile -Command \"Stop-Process -Id 7732 -Force\")",
       "Bash(node verify_redesign.mjs)",
       "Bash(node verify_redesign_mobile.mjs)",
-      "Bash(powershell -NoProfile -Command \"Stop-Process -Id 31368 -Force\")"
+      "Bash(powershell -NoProfile -Command \"Stop-Process -Id 31368 -Force\")",
+      "Bash(file background.png)",
+      "Bash(python3 -c \"from PIL import Image; im=Image.open\\('background.png'\\); print\\(im.size, im.mode\\)\")"
     ]
   }
 }

@@ -94,7 +94,7 @@ export default function ProjectsSection({ count }) {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.1 }}
-        className="bg-[var(--color-background)] text-[var(--color-text)] pt-10 px-4 max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        className="bg-[var(--color-background)] text-[var(--color-text)] pt-7 max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
       >
         {displayedProjects.map((project) => (
           <motion.div
